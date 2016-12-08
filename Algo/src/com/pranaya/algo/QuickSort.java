@@ -8,29 +8,38 @@ public class QuickSort implements Sort {
 
 		Sort sort=new QuickSort();
 		int array[]={1,3,2,4,5,6,21,58,10,12,0};
-		/*for(int i:array){
+		//int array[]={2,8,7,1,3,5,6,4};
+		for(int i:array){
 			System.out.print(i+"  ");
-		}*/
+		}
 		System.out.println();
 		sort.sort(array);
-		/*for(int i:array){
+		for(int i:array){
 			System.out.print(i+"  ");
-		}*/
+		}
 	
 	}
 	public void sort(int[] array) {
 		this.quickSort(array,0,array.length-1);
 	}
 	public void quickSort(int[] array,int left,int right){
-		if(left>=right)return;
-		
-		int pivotPosition = partation(array,left,right);
-		//System.out.println("Call "+left+" to "+(pivotPosition-1));
-		quickSort(array,left,pivotPosition-1);
-		//System.out.println("call "+(pivotPosition+1)+" to "+right);
-		quickSort(array,pivotPosition+1,right);
+		if(right<=left)return;
+		int pivot = partation(array,left,right);
+		quickSort(array,left,pivot-1);
+		quickSort(array,pivot+1,right);
 	}
 	public int partation(int[] array,int left,int right){
+		int x = array[right];
+		int i = left-1;
+		for(int j=left;j<=(right-1);j++){
+			if(array[j]<=x){
+				i++;
+				exchange(array,i,j);
+			}
+		}
+		exchange(array,i+1,right);
+		return i+1; 
+		/*
 		System.out.print("Before: ");
 		for(int i:array){
 			System.out.print(i+"  ");
@@ -65,5 +74,11 @@ public class QuickSort implements Sort {
 		}
 		System.out.println("\n");
 		return leftMark-1;
+	*/}
+	private void exchange(int[] array, int i, int j) {
+		int temp= array[i];
+		array[i]= array[j];
+		array[j]= temp;
+		
 	}
 }
