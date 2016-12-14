@@ -39,42 +39,7 @@ public class QuickSort implements Sort {
 		}
 		exchange(array,i+1,right);
 		return i+1; 
-		/*
-		System.out.print("Before: ");
-		for(int i:array){
-			System.out.print(i+"  ");
-		}
-		System.out.println();
-		int pivot=array[left];
-		System.out.println("Pivot value:"+pivot+" leftvalue:"+array[left]+" rightvalue:"+array[right]);
-		int leftMark=left+1;
-		int rightMark=right;
-		boolean done=true;
-		while(leftMark<rightMark){
-				while(leftMark<right && array[leftMark]<pivot){
-					leftMark++;
-				}
-				while(rightMark>left && pivot<array[rightMark]){
-					rightMark--;
-				}
-			
-			if(leftMark<=rightMark){
-				int temp=array[leftMark];
-				array[leftMark]=array[rightMark];
-				array[rightMark]=temp;
-				leftMark++;
-				rightMark--;
-			}
-		}
-		array[left]=array[leftMark-1];
-		array[leftMark-1]=pivot;
-		System.out.print("after: ");
-		for(int i:array){
-			System.out.print(i+"  ");
-		}
-		System.out.println("\n");
-		return leftMark-1;
-	*/}
+	}
 	private void exchange(int[] array, int i, int j) {
 		int temp= array[i];
 		array[i]= array[j];
