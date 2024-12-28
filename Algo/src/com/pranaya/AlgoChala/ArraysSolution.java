@@ -14,17 +14,21 @@ public class ArraysSolution {
         int firstIndex = 0;
         int secondIndex = array.length - 1;
         int[] solution = new int[0];
-        while(firstIndex < secondIndex){
-            if((array[firstIndex]+array[secondIndex]) == targetSum){
+        while (firstIndex < secondIndex) {
+            if ((array[firstIndex] + array[secondIndex]) == targetSum) {
                 solution = new int[2];
                 solution[0] = array[firstIndex];
                 solution[1] = array[secondIndex];
                 return solution;
-            }else if((array[firstIndex]+array[secondIndex]) > targetSum){
+            } else if ((array[firstIndex] + array[secondIndex]) > targetSum) {
                 secondIndex--;
-            }else {
+            } else {
                 firstIndex++;
-                secondIndex = array.length-1;
+                secondIndex = array.length - 1;
+            }
+            if (firstIndex == secondIndex) {
+                firstIndex++;
+                secondIndex = array.length - 1;
             }
         }
         return solution;
