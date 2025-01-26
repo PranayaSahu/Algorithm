@@ -9,7 +9,6 @@ public class ValidateSubsequence {
     }
 
     private static boolean validateSubsequence(int[] primaryArray, int[] subArray) {
-        boolean returnValue = true;
         int primaryArrayIndex = 0;
         int subArrayIndex = 0;
         while (primaryArrayIndex < primaryArray.length
@@ -21,8 +20,6 @@ public class ValidateSubsequence {
                 primaryArrayIndex++;
             }
         }
-        if(subArrayIndex == subArray.length) return true;
-        else return false;
+        return subArrayIndex == subArray.length;
     }
-
 }
