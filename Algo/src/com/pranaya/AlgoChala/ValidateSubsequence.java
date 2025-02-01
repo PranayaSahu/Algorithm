@@ -14,11 +14,9 @@ public class ValidateSubsequence {
         while (primaryArrayIndex < primaryArray.length
                 && subArrayIndex < subArray.length) {
             if (primaryArray[primaryArrayIndex] == subArray[subArrayIndex]) {
-                primaryArrayIndex++;
                 subArrayIndex++;
-            } else {
-                primaryArrayIndex++;
             }
+            primaryArrayIndex++;
         }
         return subArrayIndex == subArray.length;
     }

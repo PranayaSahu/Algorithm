@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class ArraysSolution {
     public static void main(String[] args) {
         int[] array = new int[]{3, 5, -4, 2, 11, 1, -1, 61};
-        int targetSum = 10;
+        int targetSum = -10;
         System.out.println(Arrays.toString(twoNumberSum_solution2(array, targetSum)));
     }
 
     public static int[] twoNumberSum_solution2(int[] array, int targetSum) {
-        Arrays.sort(array);
+        Arrays.sort(array); //log n
         int firstIndex = 0;
         int secondIndex = array.length - 1;
         int[] solution = new int[0];
@@ -24,11 +24,7 @@ public class ArraysSolution {
                 secondIndex--;
             } else {
                 firstIndex++;
-                secondIndex = array.length - 1;
-            }
-            if (firstIndex == secondIndex) {
-                firstIndex++;
-                secondIndex = array.length - 1;
+                //secondIndex = array.length - 1;
             }
         }
         return solution;

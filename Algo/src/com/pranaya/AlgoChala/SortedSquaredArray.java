@@ -16,7 +16,7 @@ public class SortedSquaredArray {
                     return operand;
                 })
                 .sorted()
-                .map(value -> (int) Math.pow(value, 2))
+                .map(value -> value * value)
                 .toArray();
     }
 }
