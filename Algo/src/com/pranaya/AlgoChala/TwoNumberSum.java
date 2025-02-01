@@ -2,7 +2,7 @@ package com.algochala.ArraysExample;
 
 import java.util.Arrays;
 
-public class ArraysSolution {
+public class TwoNumberSum {
     public static void main(String[] args) {
         int[] array = new int[]{3, 5, -4, 2, 11, 1, -1, 61};
         int targetSum = -10;
