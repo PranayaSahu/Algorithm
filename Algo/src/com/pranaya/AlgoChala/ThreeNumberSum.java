@@ -9,46 +9,33 @@ public class ThreeNumberSum {
     public static void main(String[] args) {
         int[] array = new int[]{12, 3, 1, 2, -6, 5, -8, 61, 6};
         int targetSum = 0;
-        Arrays.sort(array);
-        System.out.println(Arrays.deepToString(threeNumberSum(array, targetSum)));
+        System.out.println(Arrays.deepToString(threeNumberSum(array, targetSum).toArray()));
     }
 
-    public static int[][] threeNumberSum(int[] array, int targetSum) {
+    public static List<int[]> threeNumberSum(int[] array, int targetSum) {
+        Arrays.sort(array);
         List<int[]> result = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
             int targetTwoSum = targetSum - array[i];
-            var twoSumResult = twoNumberSum(array, targetTwoSum, i + 1, array.length - 1);
-            if (!twoSumResult.isEmpty()) {
-                int firstvalue = array[i];
-                twoSumResult.forEach(integers -> {
-                    integers.addFirst(firstvalue);
-                    result.add(integers.stream().mapToInt(Integer::intValue).toArray());
-                });
+            int left = i + 1;
+            int right = array.length - 1;
+            while (left < right) {
+                int currentSum = array[left] + array[right];
+                if (currentSum == targetTwoSum) {
+                    int[] solution = new int[3];
+                    solution[0] = array[i];
+                    solution[1] = array[left];
+                    solution[2] = array[right];
+                    result.add(solution);
+                    left++;
+                    right--;
+                } else if (currentSum > targetTwoSum) {
+                    right--;
+                } else {
+                    left++;
+                }
             }
         }
-        int[][] returnValue = new int[result.size()][3];
-        for(int j=0; j< result.size();j++){
-            returnValue[j] = result.get(j);
-        }
-        return returnValue;
-    }
-
-    public static List<List<Integer>> twoNumberSum(int[] array, int targetSum, int firstIndex, int secondIndex) {
-        List<List<Integer>> returnValues = new ArrayList<>();
-        while (firstIndex < secondIndex) {
-            if ((array[firstIndex] + array[secondIndex]) == targetSum) {
-                var solution = new ArrayList<Integer>();
-                solution.add(array[firstIndex]);
-                solution.add(array[secondIndex]);
-                returnValues.add(solution);
-                firstIndex++;
-                secondIndex--;
-            } else if ((array[firstIndex] + array[secondIndex]) > targetSum) {
-                secondIndex--;
-            } else {
-                firstIndex++;
-            }
-        }
-        return returnValues;
+        return result;
     }
 }
